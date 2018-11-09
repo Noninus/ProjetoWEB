@@ -4,6 +4,7 @@
  <html>
  	<head>
  	<link rel="stylesheet" type="text/css" href="css/carinho.css">
+ 	<title>Menu Principal</title>
  	</head>
           <body>
               <h2>Página inicial</h2> 	<a	href="logout">Sair	do	sistema</a>

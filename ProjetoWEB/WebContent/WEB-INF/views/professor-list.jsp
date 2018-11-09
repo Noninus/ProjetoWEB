@@ -31,7 +31,7 @@ function confirmacao(matricula) {
      }
 }
 </script>
- <title> Lista aluno </title>
+ <title>Professores List</title>
 
  </head>
       <body>   

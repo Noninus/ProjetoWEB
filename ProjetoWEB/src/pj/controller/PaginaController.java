@@ -54,7 +54,9 @@ public class PaginaController {
   Cpf cpf = new Cpf();
   
   
+  
   if (!cpf.isValid(aluno.getCpf())){
+	  System.out.println("Erro CPF");
    return "redirect:novoAluno";
   }
   
