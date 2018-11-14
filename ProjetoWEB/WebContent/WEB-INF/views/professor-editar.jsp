@@ -115,7 +115,7 @@
     <div class="form-group">
       <label class="control-label col-sm-2" for="cpf">CPF:</label>
       <div class="col-sm-10">    
-        <input value ="${tf.cpf}" type="text" class="form-control" id="cpf" placeholder="Digite seu CPF" name="cpf">
+        <input readonly="readonly" value ="${tf.cpf}" type="text" class="form-control" id="cpf" placeholder="Digite seu CPF" name="cpf">
      	<span id="cpfspan"></span>
       </div>
     </div>

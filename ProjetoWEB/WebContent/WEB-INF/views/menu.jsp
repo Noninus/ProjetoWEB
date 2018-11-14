@@ -12,7 +12,7 @@
               
             <button class="myButton" onclick="window.location.href='listaAlunos'">Alunos</button>
 			<button class="myButton" onclick="window.location.href='listaProfessor'">Professores</button>
-		     <button class="myButton" onclick="window.location.href='bemvindo.jsp'">Funcionários</button>
+		     <button class="myButton" onclick="window.location.href='listaFuncionario'">Funcionários</button>
              
           </body>
       </html>

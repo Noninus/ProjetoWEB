@@ -4,25 +4,25 @@ import java.util.ArrayList;
 
 public class Funcionario extends Pessoa {
 	
-	public int codigoCadastro;
+	public int cod_funcionario;
 	public String endereco;
 	public String cargo;
 	public String disc;
-	public String salario;
-	public String valeAlimentacao;
-	public String valeRefeicao;
-	public String valeTransporte;
-	public int qtdFilhos;
+	public double salario;
+	public double valeAlimentacao;
+	public double valeRefeicao;
+	public double valeTransporte;
 	public ArrayList<Filho> listaFilhos;
 	public String telefone;
 	public String email;
 	
 	
-	public int getCodigoCadastro() {
-		return codigoCadastro;
+
+	public int getCod_funcionario() {
+		return cod_funcionario;
 	}
-	public void setCodigoCadastro(int codigoCadastro) {
-		this.codigoCadastro = codigoCadastro;
+	public void setCod_funcionario(int cod_funcionario) {
+		this.cod_funcionario = cod_funcionario;
 	}
 	public String getEndereco() {
 		return endereco;
@@ -36,35 +36,34 @@ public class Funcionario extends Pessoa {
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
 	}
-	public String getSalario() {
+	public double getSalario() {
 		return salario;
 	}
 	public void setSalario(String salario) {
-		this.salario = salario;
+		//falta arrumar
+		salario = salario.replaceAll(".","");
+		salario = salario.replaceAll(",","");
+		salario = salario.replaceAll("R$ ","");
+		System.out.println(Double.parseDouble(salario));
+		this.salario = Double.parseDouble(salario);
 	}
-	public String getValeAlimentacao() {
+	public double getValeAlimentacao() {
 		return valeAlimentacao;
 	}
-	public void setValeAlimentacao(String valeAlimentacao) {
+	public void setValeAlimentacao(double valeAlimentacao) {
 		this.valeAlimentacao = valeAlimentacao;
 	}
-	public String getValeRefeicao() {
+	public double getValeRefeicao() {
 		return valeRefeicao;
 	}
-	public void setValeRefeicao(String valeRefeicao) {
+	public void setValeRefeicao(double valeRefeicao) {
 		this.valeRefeicao = valeRefeicao;
 	}
-	public String getValeTransporte() {
+	public double getValeTransporte() {
 		return valeTransporte;
 	}
-	public void setValeTransporte(String valeTransporte) {
+	public void setValeTransporte(double valeTransporte) {
 		this.valeTransporte = valeTransporte;
-	}
-	public int getQtdFilhos() {
-		return qtdFilhos;
-	}
-	public void setQtdFilhos(int qtdFilhos) {
-		this.qtdFilhos = qtdFilhos;
 	}
 	public ArrayList<Filho> getListaFilhos() {
 		return listaFilhos;

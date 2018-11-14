@@ -177,7 +177,6 @@
     <div class="form-group">        
       <div class="col-sm-offset-2 col-sm-6">
         <a class="btn btn-primary" href="listaAlunos" role="button">Voltar</a>
-        <input type="reset" class="btn btn-secondary"  value="Limpar">
       </div>
         <div class="col-sm-offset1 col-sm-4">
         <button style="float: right;"  type="submit" class="btn btn-success">Alterar!</button>

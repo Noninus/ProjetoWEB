@@ -1,12 +1,18 @@
 package pj.controller;
 
 import pj.dao.AlunoDAO;
+import pj.dao.FuncionarioDAO;
 import pj.dao.ProfessorDAO;
 import pj.dao.UsuarioDAO;
 import pj.model.Aluno;
+import pj.model.Filho;
+import pj.model.Funcionario;
 import pj.model.Professor;
 import pj.model.Usuario;
 import pj.utils.Cpf;
+import pj.utils.Utils;
+
+import java.util.ArrayList;
 
 import javax.validation.Valid;
 
@@ -128,7 +134,7 @@ public String editarProfessor(String cpf, Model model) {
 @RequestMapping("adicionaProfessor")
 public String adicionaProfessor(Professor professor) {
  Cpf cpf = new Cpf();
- 
+System.out.println("passeiporaq");
  
  if (!cpf.isValid(professor.getCpf())){
   return "redirect:novoProfessor";
@@ -158,6 +164,86 @@ public String listaProfessor(Model model) {
  ProfessorDAO dao = new ProfessorDAO();
  model.addAttribute("professor", dao.listarProfessor());
  return "professor-list";
+}
+
+
+
+
+
+
+
+
+@RequestMapping("removeFuncionario")
+public String removeFuncionario(Professor professor) {
+ ProfessorDAO dao = new ProfessorDAO();
+ 
+ dao.removerProfessor(professor);
+ return "redirect:listaProfessor";
+}
+
+
+@RequestMapping("novoFuncionario")
+public String novoFuncionario() {
+ return "funcionario-cadastro";
+}
+
+@RequestMapping("editarFuncionario")
+public String editarFuncionario(String cpf, Model model) {
+ ProfessorDAO dao = new ProfessorDAO();
+ model.addAttribute("cpf", cpf);
+ Professor tf = dao.consultarProfessor(cpf);
+ model.addAttribute("tf", tf);
+ return "professor-editar";
+}
+
+
+@RequestMapping("adicionaFuncionario")
+public String adicionaFuncionario(Funcionario funcionario, String[] nomesFilhos, String[] datasFilhos) {
+ Cpf cpf = new Cpf();
+ Utils util = new Utils();
+ 
+ 
+ 
+ System.out.println(nomesFilhos.length);
+ 
+ ArrayList<Filho> listFilhos = new ArrayList<Filho>();
+for(int i = 0; i < nomesFilhos.length; i++){
+	listFilhos.add(new Filho(nomesFilhos[i], util.formatarStringParaDate(datasFilhos[i]), funcionario.getCod_funcionario()));
+}
+
+if(!listFilhos.isEmpty()){
+	funcionario.setListaFilhos(listFilhos);
+}
+ 
+ 
+ if (!cpf.isValid(funcionario.getCpf())){
+  return "redirect:novoFuncionario";
+ }
+ 
+ FuncionarioDAO dao = new FuncionarioDAO();
+ try {
+  dao.cadastrarFuncionario(funcionario);   
+ } catch (Exception e) {
+  System.out.println(e);
+
+ }
+ return "redirect:listaFuncionario";
+}
+
+
+@RequestMapping("editaFuncionario")
+public String editaFuncionario(Professor professor) throws Exception {
+	ProfessorDAO dao = new ProfessorDAO();
+	dao.alterarProfessor(professor);
+ return "redirect:listaProfessor";
+}
+
+
+@RequestMapping("listaFuncionario")
+public String listaFuncionario(Model model) {
+ ProfessorDAO dao = new ProfessorDAO();
+ model.addAttribute("professor", dao.listarProfessor());
+ return "funcionario-list";
 }
 
  
