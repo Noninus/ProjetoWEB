@@ -1,18 +1,44 @@
 package pj.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cascade;
+
+@Entity
+@Table(name="funcionario")
 public class Funcionario extends Pessoa {
 	
+	@Id
+	@GeneratedValue
 	public int cod_funcionario;
 	public String endereco;
 	public String cargo;
+	@Column(name= "disciplina")
 	public String disc;
 	public double salario;
+	
+	@Column(name= "vale_alimentacao")
 	public double valeAlimentacao;
+	
+	@Column(name= "vale_refeicao")
 	public double valeRefeicao;
+	
+	@Column(name= "vale_transporte")
 	public double valeTransporte;
-	public ArrayList<Filho> listaFilhos;
+	
+	@OneToMany(mappedBy="funcionario", targetEntity=Filho.class, fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	public List<Filho> listaFilhos;
 	public String telefone;
 	public String email;
 	
@@ -40,11 +66,11 @@ public class Funcionario extends Pessoa {
 		return salario;
 	}
 	public void setSalario(String salario) {
-		//falta arrumar
-		salario = salario.replaceAll(".","");
-		salario = salario.replaceAll(",","");
-		salario = salario.replaceAll("R$ ","");
-		System.out.println(Double.parseDouble(salario));
+//		salario.replace(",", ".");
+//		salario.replace("R", "");
+//		salario.replace("$", "");
+//		salario.replace(" ", "");
+		System.out.println("aaaaaa" + salario);
 		this.salario = Double.parseDouble(salario);
 	}
 	public double getValeAlimentacao() {
@@ -65,10 +91,10 @@ public class Funcionario extends Pessoa {
 	public void setValeTransporte(double valeTransporte) {
 		this.valeTransporte = valeTransporte;
 	}
-	public ArrayList<Filho> getListaFilhos() {
+	public List<Filho> getListaFilhos() {
 		return listaFilhos;
 	}
-	public void setListaFilhos(ArrayList<Filho> listaFilhos) {
+	public void setListaFilhos(List<Filho> listaFilhos) {
 		this.listaFilhos = listaFilhos;
 	}
 	public String getTelefone() {

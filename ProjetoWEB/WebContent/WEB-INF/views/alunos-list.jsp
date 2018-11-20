@@ -23,13 +23,13 @@
 	
 	
 	<script language="Javascript">
-function confirmacao(matricula) {
-     var resposta = confirm("Deseja remover o aluno "+matricula+"?");
- 
-     if (resposta == true) {
-          window.location.href = "removeAluno?matricula="+matricula;
-     }
-}
+	function confirmacao(matricula) {
+	     var resposta = confirm("Deseja remover o aluno "+matricula+"?");
+	 
+	     if (resposta == true) {
+	          window.location.href = "removeAluno?matricula="+matricula;
+	     }
+	}
 </script>
  <title> Lista aluno </title>
 

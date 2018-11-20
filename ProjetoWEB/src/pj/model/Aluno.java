@@ -1,11 +1,22 @@
 	 package pj.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import com.sun.org.glassfish.gmbal.NameValue;
+
+@Entity
 public class Aluno extends Pessoa {
 	
 	public String endereco;
 	public String curso;
 	public String telefone;
 	public String email;
+	@Id
+	@GeneratedValue
+	@Column(name="matricula_id")
 	public int matricula;
 	
 	public Aluno(String endereco){

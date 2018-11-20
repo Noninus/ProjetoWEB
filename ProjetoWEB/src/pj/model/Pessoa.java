@@ -5,11 +5,22 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+@MappedSuperclass
 public class Pessoa {
 	
 	public String nome;
 	public String cpf;
+	@Column(name="data_nascimento")
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
+	@Transient
 	public String dataNascimentoString;
 	public String sexo;
 	
