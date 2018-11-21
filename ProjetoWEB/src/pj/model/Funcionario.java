@@ -15,6 +15,8 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.Cascade;
 
+import pj.utils.Utils;
+
 @Entity
 @Table(name="funcionario")
 public class Funcionario extends Pessoa {
@@ -66,30 +68,29 @@ public class Funcionario extends Pessoa {
 		return salario;
 	}
 	public void setSalario(String salario) {
-//		salario.replace(",", ".");
-//		salario.replace("R", "");
-//		salario.replace("$", "");
-//		salario.replace(" ", "");
-		System.out.println("aaaaaa" + salario);
-		this.salario = Double.parseDouble(salario);
+		Utils util = new Utils();
+		this.salario = util.transformarStringMoneyParaDouble(salario);
 	}
 	public double getValeAlimentacao() {
 		return valeAlimentacao;
 	}
-	public void setValeAlimentacao(double valeAlimentacao) {
-		this.valeAlimentacao = valeAlimentacao;
+	public void setValeAlimentacao(String valeAlimentacao) {
+		Utils util = new Utils();
+		this.valeAlimentacao = util.transformarStringMoneyParaDouble(valeAlimentacao);
 	}
 	public double getValeRefeicao() {
 		return valeRefeicao;
 	}
-	public void setValeRefeicao(double valeRefeicao) {
-		this.valeRefeicao = valeRefeicao;
+	public void setValeRefeicao(String valeRefeicao) {
+		Utils util = new Utils();
+		this.valeRefeicao = util.transformarStringMoneyParaDouble(valeRefeicao);
 	}
 	public double getValeTransporte() {
 		return valeTransporte;
 	}
-	public void setValeTransporte(double valeTransporte) {
-		this.valeTransporte = valeTransporte;
+	public void setValeTransporte(String valeTransporte) {
+		Utils util = new Utils();
+		this.valeTransporte = util.transformarStringMoneyParaDouble(valeTransporte);
 	}
 	public List<Filho> getListaFilhos() {
 		return listaFilhos;

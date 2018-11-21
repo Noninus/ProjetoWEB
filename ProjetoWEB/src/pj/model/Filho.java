@@ -43,6 +43,18 @@ public class Filho {
 	private Funcionario funcionario;
 	
 	
+	
+	
+	
+	
+
+	public int getCod_filho() {
+		return cod_filho;
+	}
+
+	public void setCod_filho(int cod_filho) {
+		this.cod_filho = cod_filho;
+	}
 
 	public Funcionario getFuncionario() {
 		return funcionario;
